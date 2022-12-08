@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIBLIOTECA</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-family: 'Roboto Mono', sans-serif;
+        --branco: #fff;
+        --azul: #3a0d5f;
+        --azul-hover: #1d1554;
+        --bg: #222;
+      }
+
+      body {
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(90deg, #fdbb2d 0%, #3a1c71 100%);
+        color: var(--branco);
+      }
+
+      h1 {
+        font-size: 32px;
+        text-align: center;
+        margin-top: 104px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 24px;
+      }
+      
+      .topo {
+        display: flex;
+        margin-top: 58px;
+      }
+
+      .menu ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu ul li {
+        font-weight: bold;
+        cursor: pointer;
+        background: var(--azul);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .menu ul li a {
+        text-decoration: none;
+        color: var(--branco);
+        font-size: 16px;
+        padding: 8px 20px;
+      }
+
+      .menu ul li.ativo {
+        background: var(--azul-hover);
+        transition: all 0.3s ease;
+      }
+
+      .menu ul li:hover {
+        background: var(--azul-hover);
+        transition: all 0.3s ease;
+      }
+
+      .apresentacao {
+        text-align: center;
+        padding: 5px;
+        align-self: center;
+      }
+
+      .table-results {
+        width: 100%;
+        padding-top: 15px;
+      }
+
+      .table-results thead {
+        background: var(--azul);
+      }
+
+      .table-results thead th {
+        font-size: 14px;
+        padding: 8px 24px;
+      }
+
+      .table-results tr td {
+        text-align: center;
+      }
+
+      .table-results tbody tr {
+        background: #2c2c2c;
+      }
+
+      .table-results tbody tr:hover,
+      .table-results tbody tr:nth-child(even):hover {
+        background: var(--azul-hover);
+      }
+      .table-results tbody tr:nth-child(even) {
+        background: #404b48;
+      }
+      .col-sm {
+        width: 15%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BIBLIOTECA</h1>
+    <div class="container">
+      <div class="topo row">
+        <div>
+          <nav class="menu">
+            <ul>
+              <li data-loja><a href="#lojastable">Lojas</a></li>
+              <li data-emp><a href="#clientestable">Clientes</a></li>
+              <li data-livro><a href="#livrostable">Livros</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="apresentacao">
+          <h3>
+            API Biblioteca desenvolvida durante a disciplina de Desenvolvimento
+            Web II, ministrada pelo professor Maximiliano Pezzin, curso
+            Engenharia de Software 4ª fase. A API conta com 3 tabelas: livros,
+            clientes e lojas. Para conectar com a API consulte a
+            <a href="http://192.168.0.104:3001/api/documentacao" target="_blank"
+              >documentação
+            </a>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="menu">
+        <ul>
+          <li data-user><a href="">Usuários</a></li>
+          <li data-emp><a href="">Empresas</a></li>
+          <li data-prod><a href="">Produtos</a></li>
+          <li data-guide>
+            <a href="http://192.168.0.105:3000/api/documentacao" target="_blank"
+              >Documentação</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="tabelas">
+      <div id="lojastable">
+        <h1>Lojas</h1>
+        <table class="table-results">
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>CNPJ</th>
+          <th>Endereço</th>
+          <tbody id="corpoLoja"></tbody>
+        </table>
+      </div>
+      <div id="clientestable">
+        <h1>Clientes</h1>
+        <table class="table-results">
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Sexo</th>
+          <th>Nascimento</th>
+          <th>Endereço</th>
+          <th>Telefone</th>
+          <th>CPF</th>
+          <tbody id="corpoCliente"></tbody>
+        </table>
+      </div>
+      <div id="livrostable">
+        <h1>Livros</h1>
+        <table class="table-results">
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Gênero</th>
+          <th>Editora</th>
+          <th>Data de Publi.</th>
+          <th>Descrição</th>
+          <th>Observação</th>
+          <tbody id="corpoLivro"></tbody>
+        </table>
+      </div>
+      <h1>TABELAS DOS COLEGAS</h1>
+      <div id="Emptable">
+        <h1>Natalia</h1>
+        <table class="table-results">
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Fone</th>
+          <th>Cpf</th>
+          <th>UF</th>
+          <tbody id="corpoEmp"></tbody>
+        </table>
+      </div>
+      <div>
+        <h1>Bruno</h1>
+        <table class="table-results">
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Data Nascimento</th>
+          <tbody id="corpoPessoa"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const menuLinks = document.querySelectorAll('.menu li')
+
+      window.addEventListener("load", function(event) {
+                      fetch("192.168.0.103/api/pessoa")
+                        .then((response) => response.json())
+                        .then((corpo) => {
+                          const corpoPessoa = corpo.result;
+                          const tbody = document.querySelector("#corpoPessoa");
+
+                          for (const obj in corpoPessoa) {
+                            const th_cd = document.createElement("th");
+                            th_cd.innerHTML = JSON.stringify(corpoPessoa[obj].id);
+
+                            const tr = document.createElement("tr");
+                            const td_cd = document.createElement("td");
+                            td_cd.innerHTML = JSON.stringify(corpoPessoa[obj].id);
+
+                            const td_nome = document.createElement("td");
+                            td_nome.innerHTML = JSON.stringify(corpoPessoa[obj].nome);
+
+                            const td_fone = document.createElement("td");
+                            td_fone.innerHTML = JSON.stringify(corpoPessoa[obj].email);
+
+                            const td_cpf = document.createElement("td");
+                            td_cpf.innerHTML = JSON.stringify(corpoPessoa[obj].telefone);
+
+                            const td_uf = document.createElement("td");
+                            td_uf.innerHTML = JSON.stringify(corpoPessoa[obj].data_nascimento);
+
+                            tbody.appendChild(tr);
+                            tr.appendChild(td_cd);
+                            tr.appendChild(td_nome);
+                            tr.appendChild(td_fone);
+                            tr.appendChild(td_cpf);
+                            tr.appendChild(td_uf);
+                          }
+                        });
+
+                      arrayTh.forEach((item) => {
+                        thead.appendChild(item);
+                        thead.classList.add("ativo");
+                      });
+                    });
+                   
+      window.addEventListener('load', function (event) {
+        fetch('http://192.168.0.105:3000/api/usuarios')
+          .then(response => response.json())
+          .then(corpo => {
+            const corpoEmp = corpo.result
+            const tbody = document.querySelector('#corpoEmp')
+
+            for (const obj in corpoEmp) {
+              const th_cd = document.createElement('th')
+              th_cd.innerHTML = JSON.stringify(corpoEmp[obj].cd_user)
+
+              const tr = document.createElement('tr')
+              const td_cd = document.createElement('td')
+              td_cd.innerHTML = JSON.stringify(corpoEmp[obj].cd_user)
+
+              const td_nome = document.createElement('td')
+              td_nome.innerHTML = JSON.stringify(corpoEmp[obj].nome_user)
+
+              const td_fone = document.createElement('td')
+              td_fone.innerHTML = JSON.stringify(corpoEmp[obj].fone_user)
+
+              const td_cpf = document.createElement('td')
+              td_cpf.innerHTML = JSON.stringify(corpoEmp[obj].cpf_user)
+
+              const td_uf = document.createElement('td')
+              td_uf.innerHTML = JSON.stringify(corpoEmp[obj].uf_user)
+
+              tbody.appendChild(tr)
+              tr.appendChild(td_cd)
+              tr.appendChild(td_nome)
+              tr.appendChild(td_fone)
+              tr.appendChild(td_cpf)
+              tr.appendChild(td_uf)
+            }
+          })
+
+        arrayTh.forEach(item => {
+          thead.appendChild(item)
+          thead.classList.add('ativo')
+        })
+        //Fetch em clientes
+      })
+
+      window.addEventListener('load', function (event) {
+        fetch('http://192.168.0.104:3001/api/lojas')
+          .then(response => response.json())
+          .then(corpo => {
+            const corpoLoja = corpo.result
+            const tbody = document.querySelector('#corpoLoja')
+
+            for (const obj in corpoLoja) {
+              const th_cd = document.createElement('th')
+              th_cd.innerHTML = JSON.stringify(corpoLoja[obj].id_loja)
+
+              const tr = document.createElement('tr')
+              const td_cd = document.createElement('td')
+              td_cd.innerHTML = JSON.stringify(corpoLoja[obj].id_loja)
+
+              const td_nome = document.createElement('td')
+              td_nome.innerHTML = JSON.stringify(corpoLoja[obj].nome_loja)
+
+              const td_fone = document.createElement('td')
+              td_fone.innerHTML = JSON.stringify(corpoLoja[obj].tele_loja)
+
+              const td_cpf = document.createElement('td')
+              td_cpf.innerHTML = JSON.stringify(corpoLoja[obj].cnpj_loja)
+
+              const td_uf = document.createElement('td')
+              td_uf.innerHTML = JSON.stringify(corpoLoja[obj].ender_loja)
+
+              tbody.appendChild(tr)
+              tr.appendChild(td_cd)
+              tr.appendChild(td_nome)
+              tr.appendChild(td_fone)
+              tr.appendChild(td_cpf)
+              tr.appendChild(td_uf)
+            }
+          })
+
+        arrayTh.forEach(item => {
+          thead.appendChild(item)
+          thead.classList.add('ativo')
+        })
+        //Fetch em clientes
+      })
+
+      window.addEventListener('load', function (event) {
+        fetch('http://192.168.0.104:3001/api/clientes')
+          .then(response => response.json())
+          .then(corpo => {
+            const corpoCliente = corpo.result
+            const tbody = document.querySelector('#corpoCliente')
+
+            for (const obj in corpoCliente) {
+              const tr = document.createElement('tr')
+              const td_cd = document.createElement('td')
+              td_cd.innerHTML = JSON.stringify(corpoCliente[obj].id_cli)
+
+              const td_nome = document.createElement('td')
+              td_nome.innerHTML = JSON.stringify(corpoCliente[obj].nome_cli)
+
+              const td_sexo = document.createElement('td')
+              td_sexo.innerHTML = JSON.stringify(corpoCliente[obj].sexo_cli)
+
+              const td_nasc = document.createElement('td')
+              td_nasc.innerHTML = JSON.stringify(corpoCliente[obj].nasc_cli)
+
+              const td_ender = document.createElement('td')
+              td_ender.innerHTML = JSON.stringify(corpoCliente[obj].ender_cli)
+
+              const td_fone = document.createElement('td')
+              td_fone.innerHTML = JSON.stringify(corpoCliente[obj].tel_cli)
+
+              const td_cnpj = document.createElement('td')
+              td_cnpj.innerHTML = JSON.stringify(corpoCliente[obj].cpf_cli)
+
+              tbody.appendChild(tr)
+              tr.appendChild(td_cd)
+              tr.appendChild(td_nome)
+              tr.appendChild(td_sexo)
+              tr.appendChild(td_nasc)
+              tr.appendChild(td_ender)
+              tr.appendChild(td_fone)
+              tr.appendChild(td_cnpj)
+            }
+          })
+
+        arrayTh_c.forEach(item => {
+          thead.appendChild(item)
+          thead.classList.add('ativo')
+        })
+        // Livros
+      })
+      window.addEventListener('load', function (event) {
+        fetch('http://192.168.0.104:3001/api/livros')
+          .then(response => response.json())
+          .then(corpo => {
+            const corpoLivro = corpo.result
+            const tbody = document.querySelector('#corpoLivro')
+
+            for (const obj in corpoLivro) {
+              const tr = document.createElement('tr')
+              const td_cd = document.createElement('td')
+              td_cd.innerHTML = JSON.stringify(corpoLivro[obj].id_livro)
+
+              const td_nome = document.createElement('td')
+              td_nome.innerHTML = JSON.stringify(corpoLivro[obj].nome_livro)
+
+              const td_gen = document.createElement('td')
+              td_gen.innerHTML = JSON.stringify(corpoLivro[obj].genero_livro)
+
+              const td_edit = document.createElement('td')
+              td_edit.innerHTML = JSON.stringify(corpoLivro[obj].editora_livro)
+
+              const td_dtl = document.createElement('td')
+              td_dtl.innerHTML = JSON.stringify(
+                corpoLivro[obj].data_lancamento_livro
+              )
+
+              const td_desc = document.createElement('td')
+              td_desc.innerHTML = JSON.stringify(corpoLivro[obj].desc_livro)
+
+              const td_obs = document.createElement('td')
+              td_obs.innerHTML = JSON.stringify(corpoLivro[obj].obs_livro)
+
+              tbody.appendChild(tr)
+              tr.appendChild(td_cd)
+              tr.appendChild(td_nome)
+              tr.appendChild(td_gen)
+              tr.appendChild(td_edit)
+              tr.appendChild(td_dtl)
+              tr.appendChild(td_desc)
+              tr.appendChild(td_obs)
+            }
+          })
+
+        arrayTh_l.forEach(item => {
+          thead.appendChild(item)
+          thead.classList.add('ativo')
+        })
+      })
+
+      function listUser(event) {
+        event.preventDefault()
+        menuLinks.forEach(item => {
+          item.classList.remove('ativo')
+        })
+
+        const elementoMenu = event.currentTarget
+        elementoMenu.classList.add('ativo')
+
+        const th_cd = document.createElement('th')
+        th_cd.innerText = 'cd_user'
+        const th_nome = document.createElement('th')
+        th_nome.innerText = 'nome_user'
+        const th_fone = document.createElement('th')
+        th_fone.innerText = 'fone_user'
+        const th_cpf = document.createElement('th')
+        th_cpf.innerText = 'cpf_user'
+        const th_uf = document.createElement('th')
+        th_uf.innerText = 'uf_user'
+
+        const thead = document.querySelector('thead')
+        const arrayTh = [th_cd, th_nome, th_fone, th_cpf, th_uf]
+
+        if (!thead.classList.contains('ativo')) {
+          fetch('http://192.168.0.105:3000/api/usuarios')
+            .then(response => response.json())
+            .then(corpo => {
+              const corpoEmp = corpo.result
+              const tbody = document.querySelector('tbody')
+
+              for (const obj in corpoEmp) {
+                const th_cd = document.createElement('th')
+                th_cd.innerHTML = JSON.stringify(corpoEmp[obj].cd_user)
+
+                const tr = document.createElement('tr')
+                const td_cd = document.createElement('td')
+                td_cd.innerHTML = JSON.stringify(corpoEmp[obj].cd_user)
+
+                const td_nome = document.createElement('td')
+                td_nome.innerHTML = JSON.stringify(corpoEmp[obj].nome_user)
+
+                const td_fone = document.createElement('td')
+                td_fone.innerHTML = JSON.stringify(corpoEmp[obj].fone_user)
+
+                const td_cpf = document.createElement('td')
+                td_cpf.innerHTML = JSON.stringify(corpoEmp[obj].cpf_user)
+
+                const td_uf = document.createElement('td')
+                td_uf.innerHTML = JSON.stringify(corpoEmp[obj].uf_user)
+
+                tbody.appendChild(tr)
+                tr.appendChild(td_cd)
+                tr.appendChild(td_nome)
+                tr.appendChild(td_fone)
+                tr.appendChild(td_cpf)
+                tr.appendChild(td_uf)
+              }
+            })
+
+          arrayTh.forEach(item => {
+            thead.appendChild(item)
+            thead.classList.add('ativo')
+          })
+        }
+      }
+
+      const user = document.querySelector('[data-user]')
+      user.addEventListener('click', listUser)
+    </script>
+  </body>
+</html>

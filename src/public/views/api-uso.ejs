@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentação</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-family: 'Roboto Mono', sans-serif;
+        --branco: #fff;
+        --roxo: #3a0d5f;
+        --roxo-hover: #1d1554;
+        --bg: #222;
+      }
+        body {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(90deg, #fdbb2d 0%, #3a1c71 100%);
+            color: var(--branco);
+        }
+
+        h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-top: 30px;
+            color: var(--roxo);
+            text-shadow: 1px 1px #c13308;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 24px;
+        }
+
+        pre code {
+            background-color: black;
+            border: 1px solid #999;
+            display: block;
+            padding: 5px;
+            color: wheat;
+        }
+
+        a:visited,
+        a:hover,
+        a:focus,
+        a:link {
+            text-decoration: none;
+            color: #aa8213;
+            cursor: pointer;
+        }
+
+        .itens {
+            padding: 30px;
+            color: var(--roxo);
+            font-size: 30px;
+            padding: 30px;
+            text-shadow: 1px 1px #c13308;
+        }
+
+        .go-back {
+            text-align: end;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h3 class="go-back">
+        <a href="http://192.168.0.104:3001/api/front">Voltar</a>
+    </h3>
+    <h1>Documentação</h1>
+    <div class="container">
+        <p>Instruções como consumir a API:</p>
+        <div>
+            <h3 class="itens">🏢 LOJAS </h3>
+            <p>
+                GET: <b>http://192.168.0.104:3001/api/lojas/</b> - Retorna todas as lojas cadastradas
+            </p>
+            <br>
+            <p>
+                DELETE: <b>http://192.168.0.104:3001/api/loja/{id_loja}</b> - Deleta uma loja (ID)
+            </p>
+            <br>
+            <p>
+                POST: <b>http://192.168.0.104:3001/api/loja/</b> - Adiciona uma nova loja
+            </p>
+            <br>
+            <p>Exemplo de body:</p>
+        <pre>
+            <code>
+                {
+                    "nome_loja": "Wisdow",
+                    "tele_loja": "12-3456-7890",
+                    "cnpj_loja": "12528708000107",
+                    "ender_loja": "RJ"
+                }
+            </code>
+        </pre>
+            <p>
+                PUT: <b>http://192.168.0.104:3001/api/loja/{id_loja}</b> - Altera uma loja (ID)
+            </p>
+            <br>
+            <p>Exemplo de body:</p>
+        <pre>
+            <code>
+                {
+                    "nome_loja": "Aeris",
+                    "tele_loja": "12-3456-7890",
+                    "cnpj_loja": "12528708000107",
+                    "ender_loja": "RJ"
+                }
+            </code>
+        </pre>
+        </div>
+
+        <div>
+            <h3 class="itens">🧍‍♀️🧍‍♂️CLIENTES</h3>
+            <p>
+                GET: <b>http://192.168.0.104:3001/api/clientes/</b> - Retorna todos os clientes
+            </p>
+            <br>
+            <p>
+                DELETE: <b>http://192.168.0.104:3001/api/cliente/{id_cli}</b> - Deleta um cliente (ID)
+            </p>
+            <br>
+            <p>
+                POST: <b>http://192.168.0.104:3001/api/cliente/</b> - Adiciona um novo cliente
+            </p>
+            <br>
+            <p>Exemplo de body:</p>
+        <pre>
+            <code>
+                {
+                    "nome_cli": "Joana",
+                    "sexo_cli" : "fem",
+                    "nasc_cli": "24 Agosto 1992",
+                    "ender_cli": "SC",
+                    "tel_cli": "12-98456-7890",
+                    "cpf_cli": "0569875698"
+                }
+            </code>
+        </pre>
+            <p>
+                PUT: <b>http://192.168.0.104:3001/api/cliente/{id_cli}</b> - Alterar um cliente (ID)
+            </p>
+            <br>
+            <p>Exemplo de body:</p>
+        <pre>
+            <code>
+                {
+                    "nome_cli": "Joana",
+                    "sexo_cli" : "fem",
+                    "nasc_cli": "24 Agosto 1992",
+                    "ender_cli": "SC",
+                    "tel_cli": "12-98456-7890",
+                    "cpf_cli": "0569875698"
+                }
+            </code>
+        </pre>
+
+        </div>
+
+        <div>
+            <h3 class="itens">📚LIVROS</h3>
+            <p>
+                GET: <b>http://192.168.0.104:3001/api/livros/</b> - Retorna todos os livros
+            </p>
+            <br>
+            <p>
+                DELETE: <b>http://192.168.0.104:3001/api/livro/{id_livro}</b> - Deleta um livro (ID)
+            </p>
+            <br>
+            <p>
+                POST: <b>http://192.168.0.104:3001/api/livro/</b> - Adiciona um livro
+            </p>
+            <br>
+            <p>Exemplo de body:</p>
+        <pre>
+            <code>
+                {
+                    "nome_livro": "3 porquinhos",
+                    "autor_livro": "Felipinho",
+                    "genero_livro": "terror, suspense",
+                    "editora_livro": "gatildos",
+                    "data_lancamento_livro": "04 abril 2022",
+                    "desc_livro": "Livro sobre 3 porquinhos que o felipe escreveu",
+                    "obs_livro": "Felipe é meu gato"
+                  }
+            </code>
+        </pre>
+            <p>
+                PUT: <b>http://192.168.0.104:3001/api/livro/{id_livro}</b> - Altera um livro (ID)
+            </p>
+            <br>
+            <p>Exemplo de body:</p>
+        <pre>
+            <code>
+                {
+                    "nome_livro": "3 porquinhos",
+                    "autor_livro": "Felipinho",
+                    "genero_livro": "terror, suspense",
+                    "editora_livro": "gatildos",
+                    "data_lancamento_livro": "04 abril 2022",
+                    "desc_livro": "Livro sobre 3 porquinhos que o felipe escreveu",
+                    "obs_livro": "Felipe é meu gato"
+                  }
+            </code>
+        </pre>
+
+        </div>
+    <h2 class="go-back">
+        <a href="http://192.168.0.104:3001/api/front">Voltar</a>
+    </h2>
+    </div>
+</body>
+</html>
